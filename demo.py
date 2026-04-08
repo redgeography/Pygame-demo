@@ -5,7 +5,7 @@ from time import sleep
 pygame.init()
 surface = pygame.display.set_mode(size())
 surf_rect = surface.get_rect()
-keys = pygame.keys.get_pressed()
+keys = pygame.key.get_pressed()
 def key_pressed(*names):
     return reduce(lambda acc, x: acc or keys[getattr(pygame, "K_" + x)], False)
 player_rect = pygame.Rect(0, 0, 50, 50)
