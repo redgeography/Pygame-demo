@@ -8,7 +8,7 @@ surf_rect = surface.get_rect()
 keys = pygame.keys.get_pressed()
 def key_pressed(*names):
     return reduce(lambda acc, x: acc or keys[getattr(pygame, "K_" + x)], False)
-player_rect = Rect(0, 0, 50, 50)
+player_rect = pygame.Rect(0, 0, 50, 50)
 while True:
     surface.fill("white")
     pygame.draw.rect(surface, "red", player_rect)
