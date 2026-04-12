@@ -7,6 +7,9 @@ from math import floor
 
 pygame.init()
 
+rainbow_hue = 0
+
+rainbow = pygame.Color(0, 0, 0)
 
 calibri = pygame.font.SysFont("calibri", 55)
 
@@ -49,12 +52,13 @@ def key_pressed(*names):
 
 
 def reset():
-    global score # apparently I have to do this
+    global score, rainbow_hue # apparently I have to do this
     player_rect.center = surf_rect.center
     target_rect.left = random_dim(resolution.width)
     target_rect.top = random_dim(resolution.height)
     target_rect.clamp_ip(surf_rect)
     score += 1
+    rainbow_hue = 0
     
 
 def key_pressed(*names):
@@ -80,10 +84,12 @@ while True:
 
     
     surface.fill("white")
-
+    rainbow_hue += 2
+    rainbow_hue %= 360
+    rainbow.hsva = (rainbow_hue, 60, 100, 100)
     
-    pygame.draw.rect(surface, "red", player_rect)
-    pygame.draw.ellipse(surface, "yellow", target_rect)
+    pygame.draw.rect(surface, "black", player_rect)
+    pygame.draw.ellipse(surface, rainbow, target_rect)
     surface.blit(
         calibri.render("score: " + str(score), True, "black"), (0, 0)
         )
