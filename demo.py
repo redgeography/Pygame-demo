@@ -59,6 +59,13 @@ def reset():
     target_rect.clamp_ip(surf_rect)
     score += 1
     rainbow_hue = 0
+    accel_dict.update(
+        {"left": 20,
+         "right": 20,
+         "up": 20,
+         "down": 20,
+         }
+        )
     
 
 def key_pressed(*names):
